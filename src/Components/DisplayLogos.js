@@ -1,125 +1,179 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 
-const DisplayLogo = () => {
-    const teams = {
-        arizona:{
-        teamName: "Arizona Cardinals",
-        logo: "/images/arizona.png",
-        id: "arizona",
-        clicked: false
-        },
-        atlanta:{
-        teamName: "Atlanta Falcons",
-        logo: "/images/atlanta.png",
-        id: "atlanta",
-        clicked: false
-        },
-        baltimore:{
-        teamName: "Baltimore Ravens",
-        logo: "/images/baltimore.png",
-        id: "baltimore",
-        clicked: false
-        },
-        buffalo:{
-        teamName: "Buffalo Bills",
-        logo: "/images/buffalo.jpg",
-        id: "buffalo",
-        clicked: false
-        },
-        carolina:{
-        teamName: "Carolina Panthers",
-        logo: "/images/carolina.jpg",
-        id: "carolina",
-        clicked: false
+const DisplayLogo = ({increaseScore, logBestScore}) => {
+   
+  const teams = [
+    {
+      teamName: "Arizona Cardinals",
+      logo: "/images/arizona.png",
+      id: "arizona",
+      clicked: false,
+      order: 0
     },
-    chicago:{
-        teamName: "Chicago Bears",
-        logo: "/images/chicago.jpg",
-        id: "chicago",
-        clicked: false
+    {
+      teamName: "Atlanta Falcons",
+      logo: "/images/atlanta.png",
+      id: "atlanta",
+      clicked: false,
+      order: 1
     },
-    cincinnati: {
-        teamName: "Cincinnati Bengals",
-        logo: "/images/cincinnati.jpeg",
-        id: "cincinnati",
-        clicked: false
+    {
+      teamName: "Baltimore Ravens",
+      logo: "/images/baltimore.png",
+      id: "baltimore",
+      clicked: false,
+      order: 2
     },
-    cleveland:{
-        teamName: "Cleveland Browns",
-        logo: "/images/browns.jpg",
-        id: "cleveland",
-        clicked: false
+    {
+      teamName: "Buffalo Bills",
+      logo: "/images/buffalo.jpg",
+      id: "buffalo",
+      clicked: false,
+      order: 3
     },
-    dallas:{
-        teamName: "Dallas Cowboys",
-        logo: "/images/dallas.jpg",
-        id: "dallas",
-        clicked: false
+    {
+      teamName: "Carolina Panthers",
+      logo: "/images/carolina.jpg",
+      id: "carolina",
+      clicked: false,
+      order: 4
     },
-    denver:{
-        teamName: "Denver Broncos",
-        logo: "/images/denver.png",
-        id: "denver",
-        clicked: false
+    {
+      teamName: "Chicago Bears",
+      logo: "/images/chicago.jpg",
+      id: "chicago",
+      clicked: false,
+      order: 5
     },
-    detroit:{
-        teamName: "Detroit Lions",
-        logo: "/images/detroit.jpg",
-        id: "detroit",
-        clicked: false
+    {
+      teamName: "Cincinnati Bengals",
+      logo: "/images/cincinnati.jpeg",
+      id: "cincinnati",
+      clicked: false,
+      order: 6
     },
-    greenbay: {
-        teamName: "Green Bay Packers",
-        logo: "/images/greenbay.png",
-        id: "greenbay",
-        clicked: false
+    {
+      teamName: "Cleveland Browns",
+      logo: "/images/browns.jpg",
+      id: "cleveland",
+      clicked: false,
+      order: 7
     },
-    houston: {
-        teamName: "Houston Texans",
-        logo: "/images/texans.png",
-        id: "houston",
-        clicked: false
+    {
+      teamName: "Dallas Cowboys",
+      logo: "/images/dallas.jpg",
+      id: "dallas",
+      clicked: false,
+      order: 8
     },
-    indianapolis:{
-        teamName: "Indianapolis Colts",
-        logo: "/images/colts.png",
-        id: "indianapolis",
-        clicked: false
+    {
+      teamName: "Denver Broncos",
+      logo: "/images/denver.png",
+      id: "denver",
+      clicked: false,
+      order: 9
     },
-    jacksonville:{
-        teamName: "Jacksonville Jaguars",
-        logo: "/images/jacksonville.png",
-        id: "jacksonville",
-        clicked: false
-    },};
+    {
+      teamName: "Detroit Lions",
+      logo: "/images/detroit.jpg",
+      id: "detroit",
+      clicked: false,
+      order: 10
+    },
+    {
+      teamName: "Green Bay Packers",
+      logo: "/images/greenbay.png",
+      id: "greenbay",
+      clicked: false,
+      order: 11
+    },
+    {
+      teamName: "Houston Texans",
+      logo: "/images/texans.png",
+      id: "houston",
+      clicked: false,
+      order: 12
+    },
+    {
+      teamName: "Indianapolis Colts",
+      logo: "/images/colts.png",
+      id: "indianapolis",
+      clicked: false,
+      order: 13
+    },
+    {
+      teamName: "Jacksonville Jaguars",
+      logo: "/images/jacksonville.png",
+      id: "jacksonville",
+      clicked: false,
+      order: 14
+    },
+  ];
 
-    const [clicked, setClicked] = useState(teams)
+  const [clicked, setClicked] = useState(teams);
 
-    const clickHandler = (team) => {
+  const shuffle = () =>{
+    const reordered = [...clicked]
+    reordered.forEach(team => {
+        team.order = Math.floor(Math.random()*100)
+    })
 
-        console.log(clicked.team)
-        // if (teamClicked === false){
-        //   teamClicked = true  
-        // } else{
-        //     console.log("You Lose!")
-        // }
+    reordered.sort((a, b) => a.order - b.order);
+
+    setClicked(reordered)
+
+  }
+
+  const clickHandler = (team) => {
+    let teamState = clicked.find((item) => item.id === team);
+    if (teamState.clicked === false) {
+        increaseScore();
+      const next = clicked.map((teamToAdd) => {
+    
+        if (teamToAdd.id !== team) {
+          return teamToAdd;
+        } else {
+          return {
+            ...teamToAdd,
+            clicked: true,
+          };
+        }
+        
+      });
+      setClicked(next);
+    } else {
+        logBestScore()
+        setClicked(teams)
+      console.log("You Lose!");
     }
 
-    return(
-        <div className="teamDisplayArea">
-        {Object.entries(teams).forEach(team =>{
-            return(
-                <div key={team.id} onClick={() => clickHandler(team)} className="teamCard">
-                    <img className="teamImage" src={team.logo} alt={team.teamName} />
-                    <p>{team.teamName}</p>
+  };
 
-                </div>
-            )
-        })}
+  const displayTeams = () => {
+   
+  }
+
+  useEffect(() => {
+    console.log("Use Effect");
+    console.log(teams);
+    shuffle();
+   
+}, [])
+
+  return (
+    <div className="teamDisplayArea">
+      { teams.map((team) => (
+        <div
+          key={team.id}
+          onClick={() => clickHandler(team.id)}
+          className="teamCard"
+        >
+          <img className="teamImage" src={team.logo} alt={team.teamName} />
+          <p>{team.teamName}</p>
         </div>
-    
+      ))}
+    </div>
+  );
+};
 
-    )
-}
-
-export default DisplayLogo
+export default DisplayLogo;
