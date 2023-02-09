@@ -120,11 +120,13 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
 
     reordered.sort((a, b) => a.order - b.order);
 
-    setClicked(reordered)
+    return(reordered)
 
   }
 
   const clickHandler = (team) => {
+    const reordered = shuffle();
+    setClicked(reordered)
     let teamState = clicked.find((item) => item.id === team);
     if (teamState.clicked === false) {
         increaseScore();
@@ -153,12 +155,6 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
    
   }
 
-  useEffect(() => {
-    console.log("Use Effect");
-    console.log(teams);
-    shuffle();
-   
-}, [])
 
   return (
     <div className="teamDisplayArea">
