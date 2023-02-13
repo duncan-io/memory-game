@@ -151,10 +151,6 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
 
   };
 
-  const displayTeams = () => {
-   
-  }
-
 
   return (
     <div className="teamDisplayArea">
