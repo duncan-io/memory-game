@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6b26bc50.css",
+    "main.js": "/static/js/main.f3a22352.js",
+    "static/media/american-football-field.jpg": "/static/media/american-football-field.b164490e8108962657b7.jpg",
+    "index.html": "/index.html",
+    "main.6b26bc50.css.map": "/static/css/main.6b26bc50.css.map",
+    "main.f3a22352.js.map": "/static/js/main.f3a22352.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b26bc50.css",
+    "static/js/main.f3a22352.js"
+  ]
+}
