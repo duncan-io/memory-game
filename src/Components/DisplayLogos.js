@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
-const DisplayLogo = ({increaseScore, logBestScore}) => {
-   
-  const teams = [
+const DisplayLogo = ({increaseScore, logBestScore, hiddenToggle}) => {
+
+  const logos = [
     {
       teamName: "Arizona Cardinals",
       logo: "/images/arizona.png",
@@ -108,12 +108,14 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
       clicked: false,
       order: 14
     },
-  ];
+  ]
+   
+  const teams = useRef(logos);
 
-  const [clicked, setClicked] = useState(teams);
+  const [clicked, setClicked] = useState(logos);
 
   const shuffle = () =>{
-    const reordered = [...clicked]
+    const reordered = logos
     reordered.forEach(team => {
         team.order = Math.floor(Math.random()*100)
     })
@@ -125,8 +127,6 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
   }
 
   const clickHandler = (team) => {
-    const reordered = shuffle();
-    setClicked(reordered)
     let teamState = clicked.find((item) => item.id === team);
     if (teamState.clicked === false) {
         increaseScore();
@@ -144,17 +144,23 @@ const DisplayLogo = ({increaseScore, logBestScore}) => {
       });
       setClicked(next);
     } else {
+        hiddenToggle()
         logBestScore()
-        setClicked(teams)
-      console.log("You Lose!");
+        setClicked(logos)
+
     }
 
   };
 
+  useEffect(() => {
+    console.log("Use effect run")
+    teams.current = shuffle();
+})
+
 
   return (
     <div className="teamDisplayArea">
-      { teams.map((team) => (
+      { teams.current.map((team) => (
         <div
           key={team.id}
           onClick={() => clickHandler(team.id)}
