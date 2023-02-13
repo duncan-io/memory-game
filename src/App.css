@@ -58,3 +58,38 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
+
+.background{
+  background-color: rgba(128, 128, 128, 0.5);
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal{
+  background-color: white;
+  padding: 50px 100px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal button {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.modal button:hover{
+  background-color: rgb(6, 197, 6);
+  
+}
+
+.hidden{
+  display: none;
+}
