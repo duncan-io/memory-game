@@ -5,105 +5,105 @@ const DisplayLogo = ({increaseScore, logBestScore, hiddenToggle}) => {
   const logos = [
     {
       teamName: "Arizona Cardinals",
-      logo: "/images/arizona.png",
+      logo: "./images/arizona.png",
       id: "arizona",
       clicked: false,
       order: 0
     },
     {
       teamName: "Atlanta Falcons",
-      logo: "/images/atlanta.png",
+      logo: "./images/atlanta.png",
       id: "atlanta",
       clicked: false,
       order: 1
     },
     {
       teamName: "Baltimore Ravens",
-      logo: "/images/baltimore.png",
+      logo: "./images/baltimore.png",
       id: "baltimore",
       clicked: false,
       order: 2
     },
     {
       teamName: "Buffalo Bills",
-      logo: "/images/buffalo.jpg",
+      logo: "./images/buffalo.jpg",
       id: "buffalo",
       clicked: false,
       order: 3
     },
     {
       teamName: "Carolina Panthers",
-      logo: "/images/carolina.jpg",
+      logo: "./images/carolina.jpg",
       id: "carolina",
       clicked: false,
       order: 4
     },
     {
       teamName: "Chicago Bears",
-      logo: "/images/chicago.jpg",
+      logo: "./images/chicago.jpg",
       id: "chicago",
       clicked: false,
       order: 5
     },
     {
       teamName: "Cincinnati Bengals",
-      logo: "/images/cincinnati.jpeg",
+      logo: "./images/cincinnati.jpeg",
       id: "cincinnati",
       clicked: false,
       order: 6
     },
     {
       teamName: "Cleveland Browns",
-      logo: "/images/browns.jpg",
+      logo: "./images/browns.jpg",
       id: "cleveland",
       clicked: false,
       order: 7
     },
     {
       teamName: "Dallas Cowboys",
-      logo: "/images/dallas.jpg",
+      logo: "./images/dallas.jpg",
       id: "dallas",
       clicked: false,
       order: 8
     },
     {
       teamName: "Denver Broncos",
-      logo: "/images/denver.png",
+      logo: "./images/denver.png",
       id: "denver",
       clicked: false,
       order: 9
     },
     {
       teamName: "Detroit Lions",
-      logo: "/images/detroit.jpg",
+      logo: "./images/detroit.jpg",
       id: "detroit",
       clicked: false,
       order: 10
     },
     {
       teamName: "Green Bay Packers",
-      logo: "/images/greenbay.png",
+      logo: "./images/greenbay.png",
       id: "greenbay",
       clicked: false,
       order: 11
     },
     {
       teamName: "Houston Texans",
-      logo: "/images/texans.png",
+      logo: "./images/texans.png",
       id: "houston",
       clicked: false,
       order: 12
     },
     {
       teamName: "Indianapolis Colts",
-      logo: "/images/colts.png",
+      logo: "./images/colts.png",
       id: "indianapolis",
       clicked: false,
       order: 13
     },
     {
       teamName: "Jacksonville Jaguars",
-      logo: "/images/jacksonville.png",
+      logo: "./images/jacksonville.png",
       id: "jacksonville",
       clicked: false,
       order: 14
